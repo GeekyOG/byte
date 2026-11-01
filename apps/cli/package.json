@@ -1,0 +1,42 @@
+{
+  "name": "byte-pet",
+  "version": "0.4.0",
+  "description": "A robot pet for your terminal and VS Code that grows with your coding habits, blocks leaked API keys, keeps your architecture consistent, and runs a security health check.",
+  "keywords": [
+    "pet",
+    "gamification",
+    "git-hooks",
+    "pre-commit",
+    "secrets",
+    "security",
+    "code-quality",
+    "architecture",
+    "lint",
+    "vscode",
+    "cli"
+  ],
+  "license": "MIT",
+  "author": "Onojuvwevwo Oghomena (Ace Digital Hub)",
+  "bin": {
+    "byte": "dist/byte.js",
+    "byte-pet": "dist/byte.js"
+  },
+  "files": [
+    "dist/byte.js",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "esbuild src/index.ts --bundle --platform=node --target=node18 --minify --outfile=dist/byte.js --banner:js=\"#!/usr/bin/env node\"",
+    "prepublishOnly": "npm run build"
+  },
+  "devDependencies": {
+    "@byte/pet": "0.1.0",
+    "@byte/signals": "0.1.0",
+    "@byte/design-guard": "0.1.0",
+    "@byte/audit": "0.1.0"
+  }
+}

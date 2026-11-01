@@ -1,0 +1,21 @@
+{
+  "name": "byte",
+  "private": true,
+  "version": "0.1.0",
+  "workspaces": [
+    "packages/*",
+    "plugins/*",
+    "apps/*"
+  ],
+  "scripts": {
+    "build": "npm run build -w @byte/pet -w @byte/signals -w @byte/design-guard -w @byte/audit -w byte-pet -w byte-vscode",
+    "test": "vitest run",
+    "typecheck": "tsc -b"
+  },
+  "devDependencies": {
+    "@types/node": "^20.14.0",
+    "esbuild": "^0.23.1",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}

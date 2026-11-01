@@ -1,0 +1,177 @@
+{
+  "name": "byte-vscode",
+  "displayName": "Byte",
+  "description": "A robot pet that grows with your coding habits.",
+  "version": "0.5.0",
+  "publisher": "acedigitalhub",
+  "license": "MIT",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./dist/extension.js",
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "byte",
+          "title": "Byte",
+          "icon": "media/byte.svg"
+        }
+      ]
+    },
+    "views": {
+      "byte": [
+        {
+          "type": "webview",
+          "id": "byte.pet",
+          "name": "Pet"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "byte.installHook",
+        "title": "Byte: Install git hooks"
+      },
+      {
+        "command": "byte.guardInit",
+        "title": "Byte: Learn design rules for this repo"
+      },
+      {
+        "command": "byte.guardCheck",
+        "title": "Byte: Check staged changes"
+      },
+      {
+        "command": "byte.audit",
+        "title": "Byte: Run health check"
+      },
+      {
+        "command": "byte.toggleVacation",
+        "title": "Byte: Toggle vacation mode"
+      },
+      {
+        "command": "byte.show",
+        "title": "Byte: Show pet"
+      },
+      {
+        "command": "byte.setupTests",
+        "title": "Byte: Let Byte read my test results"
+      },
+      {
+        "command": "byte.walkthrough",
+        "title": "Byte: Open setup guide"
+      }
+    ],
+    "configuration": {
+      "title": "Byte",
+      "properties": {
+        "byte.testReportGlob": {
+          "type": "string",
+          "default": "**/{test-results,vitest-report,jest-results}.json",
+          "description": "Where Byte looks for Jest or Vitest JSON reports."
+        },
+        "byte.watchLint": {
+          "type": "boolean",
+          "default": true,
+          "description": "Reward fixing errors shown in the Problems panel."
+        },
+        "byte.sound": {
+          "type": "boolean",
+          "default": true,
+          "description": "Let Byte beep, giggle and chime."
+        },
+        "byte.soundVolume": {
+          "type": "number",
+          "default": 0.5,
+          "minimum": 0,
+          "maximum": 1,
+          "description": "How loud Byte is, from 0 to 1."
+        }
+      }
+    },
+    "walkthroughs": [
+      {
+        "id": "getStarted",
+        "title": "Get started with Byte",
+        "description": "Wake up your robot: protect commits, learn your design rules, connect tests and run a first health check.",
+        "steps": [
+          {
+            "id": "hooks",
+            "title": "Protect every commit",
+            "description": "Install two git hooks so Byte can stop leaked keys and give you XP.\n[Install git hooks](command:byte.installHook)",
+            "media": {
+              "markdown": "media/walkthrough/hooks.md"
+            },
+            "completionEvents": [
+              "onCommand:byte.installHook"
+            ]
+          },
+          {
+            "id": "rules",
+            "title": "Let Byte learn your design rules",
+            "description": "Byte studies your code and suggests the rules it already follows.\n[Learn design rules](command:byte.guardInit)",
+            "media": {
+              "markdown": "media/walkthrough/rules.md"
+            },
+            "completionEvents": [
+              "onCommand:byte.guardInit"
+            ]
+          },
+          {
+            "id": "tests",
+            "title": "Connect your tests",
+            "description": "Let Byte read Jest or Vitest results.\n[Connect tests](command:byte.setupTests)",
+            "media": {
+              "markdown": "media/walkthrough/tests.md"
+            },
+            "completionEvents": [
+              "onCommand:byte.setupTests"
+            ]
+          },
+          {
+            "id": "audit",
+            "title": "Run the first health check",
+            "description": "Find leaked keys, vulnerable packages and risky code.\n[Run health check](command:byte.audit)",
+            "media": {
+              "markdown": "media/walkthrough/audit.md"
+            },
+            "completionEvents": [
+              "onCommand:byte.audit"
+            ]
+          },
+          {
+            "id": "meet",
+            "title": "Meet Byte",
+            "description": "Open the panel and say hi.\n[Show Byte](command:byte.show)",
+            "media": {
+              "markdown": "media/walkthrough/meet.md"
+            },
+            "completionEvents": [
+              "onCommand:byte.show",
+              "onView:byte.pet"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "scripts": {
+    "build": "node build.mjs",
+    "package": "npx @vscode/vsce package --no-dependencies"
+  },
+  "dependencies": {
+    "@byte/pet": "0.1.0",
+    "@byte/signals": "0.1.0",
+    "@byte/design-guard": "0.1.0",
+    "@byte/audit": "0.1.0"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.85.0"
+  }
+}

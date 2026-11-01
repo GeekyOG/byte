@@ -1,0 +1,23 @@
+{
+  "files": [],
+  "references": [
+    {
+      "path": "packages/pet"
+    },
+    {
+      "path": "packages/signals"
+    },
+    {
+      "path": "plugins/design-guard"
+    },
+    {
+      "path": "plugins/audit"
+    },
+    {
+      "path": "apps/cli"
+    },
+    {
+      "path": "apps/vscode"
+    }
+  ]
+}
