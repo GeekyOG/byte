@@ -3,3 +3,6 @@ dist
 *.tsbuildinfo
 *.vsix
 .byte
+.byte/audit.json
+.byte/last-report.json
+vitest-report.json

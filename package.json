@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "build": "npm run build -w @byte/pet -w @byte/signals -w @byte/design-guard -w @byte/audit -w byte-pet -w byte-vscode",
-    "test": "vitest run",
+    "test": "vitest run --reporter=default --reporter=json --outputFile=vitest-report.json",
     "typecheck": "tsc -b"
   },
   "devDependencies": {
